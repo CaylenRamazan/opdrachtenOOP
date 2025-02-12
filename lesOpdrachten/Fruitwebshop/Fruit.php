@@ -6,10 +6,16 @@ class Fruit{
 
     // properties
     public $Name;
+    private $Price;
 
     // functions
-    function printName(){
+    function setPrice($prijs){
+        $this->Price = $prijs;
+    }
 
+
+    function getPrice(){
+       return $this->Price;
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-// Functie: hoofdprogramma webshop fruit
+// Functie: Hoofdprogramma webshop fruit
 // Auteur: Caylen Ramazan
 
 
@@ -12,7 +12,18 @@ include_once "Fruit.php";
 
 // Aanmaken object op basis van de class beschrijving Fruit
 $banaan = new Fruit();
-var_dump($banaan);
-
-
+$banaan->Name = "Banaan";
+$banaan->setPrice(2.78);
+echo"<br>";
+echo"de naam is:". $banaan->Name;
+echo "<br>";
+echo  "de prijs is: ".$banaan->getPrice();
+// Aanmaken object op basis van de class beschrijving Fruit
+$appel = new Fruit();
+$appel->Name = "Appel";
+$appel->setPrice(3.12);
+echo "<br>";
+echo "de naam is:". $appel->Name;
+echo "<br>";
+echo "de prijs is: ". $appel->getPrice();
 ?>
