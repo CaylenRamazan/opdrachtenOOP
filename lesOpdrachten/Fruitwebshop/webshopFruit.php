@@ -4,26 +4,15 @@
 
 
 // Initialisatie
-include_once "functions.php";
 include_once "Fruit.php";
 
 // Main
 
 
 // Aanmaken object op basis van de class beschrijving Fruit
-$banaan = new Fruit();
-$banaan->Name = "Banaan";
-$banaan->setPrice(2.78);
-echo"<br>";
-echo"de naam is:". $banaan->Name;
-echo "<br>";
-echo  "de prijs is: ".$banaan->getPrice();
+$banaan = new Fruit("Banaan", 2.98);
+$banaan->printFruit();
 // Aanmaken object op basis van de class beschrijving Fruit
-$appel = new Fruit();
-$appel->Name = "Appel";
-$appel->setPrice(3.12);
-echo "<br>";
-echo "de naam is:". $appel->Name;
-echo "<br>";
-echo "de prijs is: ". $appel->getPrice();
+$appel = new Fruit("Appel", 3.59);
+$appel->printFruit();
 ?>
