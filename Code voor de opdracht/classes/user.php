@@ -32,7 +32,8 @@
                     array_push($errors, "Username bestaat al.");
                 } else {
                     // username opslaan in tabel login
-                    // INSERT INTO `user` (`username`, `password`, `role`) VALUES ('kjhasdasdkjhsak', 'asdasdasdasdas', '');
+                    $sql= "INSERT INTO `user` (`username`, `password`, `email`)
+                           VALUES (:username, :password, :email);";
                     // Manier 1
                     
                     $status = true;
@@ -53,14 +54,31 @@
             }
 
             // Test username > 3 tekens en < 50 tekens
-            
+            if (strlen($username) >= 3 && strlen($username) <= 50) {
+                echo "De gebruikersnaam is geldig.";
+            } else {
+                echo "De gebruikersnaam moet tussen de 3 en 50 tekens zijn.";
+            }
             return $errors;
         }
 
         public function LoginUser(){
 
             // Connect database
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "userlogin";
 
+
+            try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // echo "Connected successfully<br>";
+            } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            }
             // Zoek user in de table user
            echo "Username:" . $this->username;
 

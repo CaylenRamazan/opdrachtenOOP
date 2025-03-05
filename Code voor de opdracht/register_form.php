@@ -12,6 +12,7 @@ if(isset($_POST['register-btn'])){
 	$user->ShowUser();
 
 	// Validatie gegevens
+	$user->ValidateUser();
 	// Hoe???
 
 	if(count($errors) == 0){
@@ -54,6 +55,10 @@ if(isset($_POST['register-btn'])){
 				<div>
 					<label>Username</label>
 					<input type="text"  name="username" />
+				</div>
+				<div >
+					<label>email</label>
+					<input type="email"  name="email" />
 				</div>
 				<div >
 					<label>Password</label>
