@@ -1,0 +1,15 @@
+{
+    "name": "hp/codevoordeopdrachtkopie",
+    "autoload": {
+        "psr-4": {
+            "login\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CaylenRamazan",
+            "email": "9023381@student.zadkine.nl"
+        }
+    ],
+    "require": {}
+}

@@ -1,11 +1,15 @@
 <?php
+
+require_once "../vendor/autoload.php";
+use login\classes\User;
+
 session_start(); // Start the session to manage user sessions
 
 // Is the login button clicked?
 if (isset($_POST['login-btn'])) {
 
-    require_once('classes/user.php');
-    $user = new User($pdo); // Passing the $pdo connection to the User class
+    require_once('classes/User.php');
+    $user = new User($PDO); // Passing the $pdo connection to the User class
 
     // Set the username and password from POST data
     $user->username = $_POST['username'];

@@ -1,28 +1,36 @@
 <?php
+namespace login\Classes;
+use PDO;
+use PDOException;
 require_once 'config.php';
 
-class User {
+class User
+{
     public $username;
     public $email;
     private $password;
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
     // Wachtwoord instellen
-    public function SetPassword($password) {
+    public function SetPassword($password)
+    {
         $this->password = $password;
     }
 
     // Wachtwoord ophalen
-    public function GetPassword() {
-        return $this->password; 
+    public function GetPassword()
+    {
+        return $this->password;
     }
 
     // Gebruikersvalidatie bij registratie
-    public function ValidateUser() {
+    public function ValidateUser()
+    {
         $errors = [];
 
         if (empty($this->username) || strlen($this->username) < 3 || strlen($this->username) > 50) {
@@ -41,7 +49,8 @@ class User {
     }
 
     // Registreren van een nieuwe gebruiker
-    public function RegisterUser() {
+    public function RegisterUser()
+    {
         $errors = [];
 
         // Controleren of de gebruiker al bestaat
@@ -68,7 +77,8 @@ class User {
     }
 
     // Validatie van login gegevens
-    public function ValidateLogin() {
+    public function ValidateLogin()
+    {
         $errors = [];
 
         if (empty($this->username) || empty($this->password)) {
@@ -79,7 +89,8 @@ class User {
     }
 
     // Inloggen van een gebruiker
-    public function LoginUser() {
+    public function LoginUser()
+    {
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE username = :username");
         $stmt->execute(['username' => $this->username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -93,28 +104,33 @@ class User {
     }
 
     // Controleren of een gebruiker is ingelogd
-    public function IsLoggedIn() {
+    public function IsLoggedIn()
+    {
         return isset($_SESSION['username']);
     }
 
     // Gebruikersgegevens ophalen
-    public function GetUser($username) {
+    public function GetUser($username)
+    {
         $stmt = $this->pdo->prepare("SELECT username, email FROM user WHERE username = :username");
         $stmt->execute(['username' => $username]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Gebruiker tonen
-    public function ShowUser() {
+    public function ShowUser()
+    {
         echo "<br>Gebruikersnaam: " . htmlspecialchars($this->username);
         echo "<br>Email: " . htmlspecialchars($this->email);
     }
 
     // Uitloggen
-    public function Logout() {
+    public function Logout()
+    {
         session_destroy();
         header("Location: login_form.php");
         exit();
     }
 }
+
 ?>

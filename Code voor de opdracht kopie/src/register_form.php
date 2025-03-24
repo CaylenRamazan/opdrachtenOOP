@@ -1,11 +1,15 @@
 <?php
-require_once 'config.php';
-require_once 'classes/user.php';
+
+require_once "../vendor/autoload.php";
+use login\classes\User;
+
+//require_once 'config.php';
+//require_once 'classes/User.php';
 
 $errors = [];
 
 if (isset($_POST['register-btn'])) {
-    $user = new User($pdo);
+    $user = new User($PDO);
     $user->username = $_POST['username'];
     $user->email = $_POST['email'];
     $user->SetPassword($_POST['password']);

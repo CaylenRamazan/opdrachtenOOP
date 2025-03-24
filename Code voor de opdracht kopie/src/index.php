@@ -3,7 +3,10 @@
     // Auteur: Wigmans
 
     // Initialisatie
-	require_once "config.php";
+require_once "../vendor/autoload.php";
+use login\classes\User;
+
+//require_once "config.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +22,10 @@
 	<br/>
 	<?php
 
-    require_once 'classes/user.php';
+    //require_once 'classes/User.php';
 
-    $user = new User($pdo);
+
+    $user = new User($PDO);
 
 	// Activeer de session
 	session_start();
